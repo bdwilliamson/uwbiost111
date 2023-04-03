@@ -1,7 +1,7 @@
 ---
 title: "Statistics in Infectious Disease Research"
-author: "Brian D. Williamson, PhD<br> <span style= 'font-size: 75%;'> Fred Hutchinson Cancer Research Center </span>"
-date: "2 December 2020<br> <a href = 'https://bdwilliamson.github.io/#talks' style = 'color: white;'>https://bdwilliamson.github.io/#talks</a>"
+author: "Brian D. Williamson, PhD<br> <span style= 'font-size: 75%;'> Kaiser Permanente Washington Health Research Institute </span>"
+date: "5 April 2023<br> <a href = 'https://bdwilliamson.github.io/#talks' style = 'color: white;'>https://bdwilliamson.github.io/#talks</a>"
 output:
   xaringan::moon_reader:
     css: xaringan-themer.css
@@ -114,39 +114,6 @@ knitr::include_graphics("img/timeline_8.png")
 
 ---
 
-## My journey to full-time statistics research
-
-```{r timeline-9, echo = FALSE, out.width = "720px", fig.align = "center"}
-knitr::include_graphics("img/timeline_9.png")
-```
-
----
-
-## My journey to full-time statistics research
-
-```{r timeline-10, echo = FALSE, out.width = "720px", fig.align = "center"}
-knitr::include_graphics("img/timeline_10.png")
-```
-
----
-
-## My journey to full-time statistics research
-
-```{r timeline-11, echo = FALSE, out.width = "720px", fig.align = "center"}
-knitr::include_graphics("img/timeline_11.png")
-```
-
----
-
-## My journey to full-time statistics research
-
-```{r timeline-12, echo = FALSE, out.width = "720px", fig.align = "center"}
-knitr::include_graphics("img/timeline_12.png")
-```
-
----
-
-
 ## What do I do all day?
 
 Biostatistics: turning data into knowledge (Patrick Heagerty, UW)
@@ -166,13 +133,16 @@ Most weeks for me involve:
 * Meetings with collaborators:
 --
 
-    * doctors, infectious disease specialists
+    * clinicians, epidemiologists
+--
+
+    * programmers, natural language processing experts
 --
 
     * other statisticians
 --
 
-* Diversity, Equity, and Inclusion work
+* Mentoring students on research projects
 
 ---
 
@@ -444,7 +414,7 @@ Often, purely for .blue1[prediction]
 
 --
 
-* Neural networks: [AlphaGo](https://deepmind.com/research/case-studies/alphago-the-story-so-far), [AlphaFold](https://www.deepmind.com/blog/article/AlphaFold-Using-AI-for-scientific-discovery)
+* Neural networks: [AlphaGo](https://deepmind.com/research/case-studies/alphago-the-story-so-far), [AlphaFold](https://www.deepmind.com/blog/article/AlphaFold-Using-AI-for-scientific-discovery), [ChatGPT](https://openai.com/blog/chatgpt)
 
 ---
 

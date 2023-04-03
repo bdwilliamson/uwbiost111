@@ -3,19 +3,25 @@
   <head>
     <title>Statistics in Infectious Disease Research</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Brian D. Williamson, PhD   Fred Hutchinson Cancer Research Center " />
-    <script src="index_files/header-attrs-2.4/header-attrs.js"></script>
-    <link href="index_files/tile-view-0.2.3.9000/tile-view.css" rel="stylesheet" />
-    <script src="index_files/tile-view-0.2.3.9000/tile-view.js"></script>
+    <meta name="author" content="Brian D. Williamson, PhD   Kaiser Permanente Washington Health Research Institute " />
+    <script src="index_files/header-attrs-2.16/header-attrs.js"></script>
+    <link href="index_files/tile-view-0.2.6/tile-view.css" rel="stylesheet" />
+    <script src="index_files/tile-view-0.2.6/tile-view.js"></script>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
 class: center, middle, title-slide
 
+.title[
 # Statistics in Infectious Disease Research
-### Brian D. Williamson, PhD<br> <span style="font-size: 75%;"> Fred Hutchinson Cancer Research Center </span>
-### 2 December 2020<br> <a href = 'https://bdwilliamson.github.io/#talks' style = 'color: white;'>https://bdwilliamson.github.io/#talks</a>
+]
+.author[
+### Brian D. Williamson, PhD<br> <span style="font-size: 75%;"> Kaiser Permanente Washington Health Research Institute </span>
+]
+.date[
+### 5 April 2023<br> <a href = 'https://bdwilliamson.github.io/#talks' style = 'color: white;'>https://bdwilliamson.github.io/#talks</a>
+]
 
 ---
 
@@ -76,31 +82,6 @@ class: center, middle, title-slide
 
 ---
 
-## My journey to full-time statistics research
-
-&lt;img src="img/timeline_9.png" width="720px" style="display: block; margin: auto;" /&gt;
-
----
-
-## My journey to full-time statistics research
-
-&lt;img src="img/timeline_10.png" width="720px" style="display: block; margin: auto;" /&gt;
-
----
-
-## My journey to full-time statistics research
-
-&lt;img src="img/timeline_11.png" width="720px" style="display: block; margin: auto;" /&gt;
-
----
-
-## My journey to full-time statistics research
-
-&lt;img src="img/timeline_12.png" width="720px" style="display: block; margin: auto;" /&gt;
-
----
-
-
 ## What do I do all day?
 
 Biostatistics: turning data into knowledge (Patrick Heagerty, UW)
@@ -120,13 +101,16 @@ Most weeks for me involve:
 * Meetings with collaborators:
 --
 
-    * doctors, infectious disease specialists
+    * clinicians, epidemiologists
+--
+
+    * programmers, natural language processing experts
 --
 
     * other statisticians
 --
 
-* Diversity, Equity, and Inclusion work
+* Mentoring students on research projects
 
 ---
 
@@ -384,7 +368,7 @@ Often, purely for .blue1[prediction]
 
 --
 
-* Neural networks: [AlphaGo](https://deepmind.com/research/case-studies/alphago-the-story-so-far), [AlphaFold](https://www.deepmind.com/blog/article/AlphaFold-Using-AI-for-scientific-discovery)
+* Neural networks: [AlphaGo](https://deepmind.com/research/case-studies/alphago-the-story-so-far), [AlphaFold](https://www.deepmind.com/blog/article/AlphaFold-Using-AI-for-scientific-discovery), [ChatGPT](https://openai.com/blog/chatgpt)
 
 ---
 
@@ -580,6 +564,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable
