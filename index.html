@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Statistics in Infectious Disease Research</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Brian D. Williamson, PhD   Fred Hutchinson Cancer Research Center " />
+    <script src="index_files/header-attrs-2.4/header-attrs.js"></script>
+    <link href="index_files/tile-view-0.2.3.9000/tile-view.css" rel="stylesheet" />
+    <script src="index_files/tile-view-0.2.3.9000/tile-view.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, title-slide
+
+# Statistics in Infectious Disease Research
+### Brian D. Williamson, PhD<br> <span style="font-size: 75%;"> Fred Hutchinson Cancer Research Center </span>
+### 2 December 2020<br> <a href = 'https://bdwilliamson.github.io/#talks' style = 'color: white;'>https://bdwilliamson.github.io/#talks</a>
+
+---
+
+
+
+
+&lt;style type="text/css"&gt;
+.remark-slide-content {
+    font-size: 22px
+}
+&lt;/style&gt;
+
+## My journey to full-time statistics research
+
+&lt;img src="img/timeline_1.png" width="720px" style="display: block; margin: auto;" /&gt;
+
+---
+
+## My journey to full-time statistics research
+
+&lt;img src="img/timeline_2.png" width="720px" style="display: block; margin: auto;" /&gt;
+
+---
+
+## My journey to full-time statistics research
+
+&lt;img src="img/timeline_3.png" width="720px" style="display: block; margin: auto;" /&gt;
+
+---
+
+## My journey to full-time statistics research
+
+&lt;img src="img/timeline_4.png" width="720px" style="display: block; margin: auto;" /&gt;
+
+---
+
+## My journey to full-time statistics research
+
+&lt;img src="img/timeline_5.png" width="720px" style="display: block; margin: auto;" /&gt;
+
+---
+
+## My journey to full-time statistics research
+
+&lt;img src="img/timeline_6.png" width="720px" style="display: block; margin: auto;" /&gt;
+
+---
+
+## My journey to full-time statistics research
+
+&lt;img src="img/timeline_7.png" width="720px" style="display: block; margin: auto;" /&gt;
+
+---
+
+## My journey to full-time statistics research
+
+&lt;img src="img/timeline_8.png" width="720px" style="display: block; margin: auto;" /&gt;
+
+---
+
+## My journey to full-time statistics research
+
+&lt;img src="img/timeline_9.png" width="720px" style="display: block; margin: auto;" /&gt;
+
+---
+
+## My journey to full-time statistics research
+
+&lt;img src="img/timeline_10.png" width="720px" style="display: block; margin: auto;" /&gt;
+
+---
+
+## My journey to full-time statistics research
+
+&lt;img src="img/timeline_11.png" width="720px" style="display: block; margin: auto;" /&gt;
+
+---
+
+## My journey to full-time statistics research
+
+&lt;img src="img/timeline_12.png" width="720px" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+## What do I do all day?
+
+Biostatistics: turning data into knowledge (Patrick Heagerty, UW)
+
+Most weeks for me involve:
+--
+
+* Coding or debugging in R and Python
+--
+
+* Reading scientific papers
+--
+
+* Doing math
+--
+
+* Meetings with collaborators:
+--
+
+    * doctors, infectious disease specialists
+--
+
+    * other statisticians
+--
+
+* Diversity, Equity, and Inclusion work
+
+---
+
+## What do I do all day?
+
+Key skills:
+* Curiosity
+--
+
+* Communication
+--
+
+* Time management
+--
+
+* Mathematical reasoning/logic
+
+---
+
+## Example: preparing for AMP
+
+.pull-left[
+&lt;img src="img/amp.png" width="270px" style="display: block; margin: auto;" /&gt;
+NIH NIAID-sponsored HVTN + HPTN phase 2b HIV prevention efficacy trial; statistical design described in Gilbert et al. (2017) _Stat Commun Infect Dis_
+
+&lt;img src="img/neutralized_hiv.png" width="270px" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+&lt;img src="img/pred_prob_resistance_slapnap.png" width="270px" style="display: block; margin: auto;" /&gt;
+Magaret, Benkeser, Williamson et al. (2019) _PLoS Comp Bio_
+]
+
+---
+
+## Hypothesis testing
+
+Primary goal of AMP: .blue1[test] whether or not the therapy is .blue2[effective].
+
+--
+
+Secondary goal of AMP: .green[which genetic mutations] make HIV-1 susceptible to neutralization?
+
+--
+
+&lt;img src="img/hiv_sequence_movie_v2.png" width="720px" style="display: block; margin: auto;" /&gt;
+
+--
+
+Key challenges:
+--
+
+* What does "susceptible" mean? How to measure it? 
+--
+
+* How do we determine if a mutation has a real effect?
+--
+
+* How do we do this at .red[each position] on the HIV-1 genome?
+
+---
+
+## Hypothesis testing
+
+Example: testing whether a single coin is fair
+
+--
+
+Suppose you have a single coin; probability of heads is `\(p_0\)` (unknown)
+
+--
+
+Suppose you have results from 100 flips; proportion of heads `\(= 0.7\)`
+
+--
+
+Your friend says that if you correctly guess the next flip, you get $100; otherwise, your friend gets $200
+
+--
+
+You want to _test_ if the coin is fair, i.e., test: `$$H_0: p_0 = 0.5 \text{ (coin is fair) vs } H_1: p_0 &gt; 0.5 \text{ (coin is unfair)}$$`
+
+---
+
+## Hypothesis testing
+
+Make a decision based on the data 
+
+--
+
+Probability of a wrong decision?
+
+--
+
+|   | `\(H_0\)` true | `\(H_1\)` true
+| - | ---------- | ----------
+| Decide `\(H_0\)` | 1 - `\(\alpha\)` | type II error
+| Decide `\(H_1\)` | .red[type I error] ( `\(\alpha\)` ) | .blue2[power] 
+
+`\(\alpha = Pr(\text{reject } H_0 \mid H_0 \text{ true})\)`
+
+--
+
+High power = good: want to win money
+
+--
+
+Type I error = much worse: want to minimize chance of losing money 
+
+--
+
+.blue2[**Even more important**] to control type I errors in biomedical research
+
+--
+
+Typically, we pre-specify a level `\(\alpha\)` of maximum allowable type I error
+
+---
+
+## Testing multiple hypotheses
+
+**Goal:** test whether 10 different coins are fair
+
+**Procedure:** perform level 0.05 test for each coin 
+
+--
+
+What is my overall chance of making a type I error?
+
+--
+
+.red[Not] `\(\alpha\)`! Why? 
+
+---
+
+## Testing multiple hypotheses
+
+Intuition: chances of observing a rare event (type I error) increase with increased number of observations
+
+--
+
+&amp;zwj;Mathematically:
+
+`\(Pr(\text{reject } H_{0,1} \mid H_{0,1} \text{ true}) = \alpha\)`; `\(Pr(\text{don't reject } H_{0,1} \mid H_{0,1} \text{ true}) = 1 - \alpha\)`;
+
+--
+
+`$$Pr(\text{don't reject } H_{0,2} \mid H_{0,2} \text{ true}) = 1 - \alpha;$$`
+
+--
+
+`$$\vdots$$`
+--
+
+`$$Pr(\text{don't reject any } \{H_{0,j}\}_{j = 1}^{10} \mid \{H_{0,j}\}_{j = 1}^{10} \text{ true}) = (1 - \alpha)^{10}$$`
+
+--
+
+`$$Pr(\text{reject one or more} \mid \{H_{0,j}\}_{j = 1}^{10} \text{ true}) = 1 -$$`
+`$$Pr(\text{don't reject any } \{H_{0,j}\}_{j = 1}^{10} \mid \{H_{0,j}\}_{j = 1}^{10})$$`
+
+--
+
+`\(= 1 - (1 - \alpha)^{10} \approx 40\)`%!!
+
+---
+
+## Adjusting for multiple comparisons
+
+One simple way to adjust: divide `\(\alpha\)` by the number of tests
+
+--
+
+&amp;zwj;Example: genome-wide association study
+
+Testing for effect at 1000 genes: `\(.05 / 1000 = .00005\)`
+
+--
+
+.red[This reduces power]: need **strong** effect!
+
+--
+
+Another option: pre-screen based on some criterion?
+
+---
+
+## Preparing for AMP
+
+Recall the AMP problem: .green[which genetic mutations] make HIV-1 susceptible to neutralization?
+
+--
+
+**Problem:** thousands of potential mutations across HIV-1 genome
+* Testing for effect of all mutations: small individual `\(\alpha\)`
+* Low power!
+
+**Goal:** pre-screen to a more reasonable number of mutations
+
+--
+
+**Procedure:** combine
+* .blue1[machine learning] (more to come)
+
+--
+
+* publicly-available data
+
+--
+
+* .blue2[statistical inference] on variable importance (my PhD dissertation)
+
+---
+
+## Example: COVID-19 risk prediction
+
+.pull-left[
+&lt;img src="img/coronavirus_seattletimes.png" width="480px" style="display: block; margin: auto;" /&gt;
+Source: _Seattle Times_
+]
+.pull-right[
+&lt;img src="img/seattle_flu_study.png" width="360px" style="display: block; margin: auto;" /&gt;
+
+&lt;img src="img/scan.png" width="360px" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+## Predicting clinical outcomes
+
+**Goal:** predict death or intubation (being put on a ventilator) based on factors measured at time of admission to hospital 
+
+--
+
+**Challenges:**
+* some measurements collected multiple times
+* want to allow flexible relationship between features and response
+
+**Idea:** use machine learning!
+
+---
+
+## Machine learning? (aka "artificial intelligence")
+
+Often, purely for .blue1[prediction]
+
+--
+
+&amp;zwj;Examples:
+* Regression analyses (classical statistics)
+
+--
+
+* Decision trees: &lt;a href="https://en.wikipedia.org/wiki/Deep_Blue_(chess_computer)"&gt;Deep Blue&lt;/a&gt;, triage charts
+
+--
+
+* Neural networks: [AlphaGo](https://deepmind.com/research/case-studies/alphago-the-story-so-far), [AlphaFold](https://www.deepmind.com/blog/article/AlphaFold-Using-AI-for-scientific-discovery)
+
+---
+
+## Machine learning: bias vs variance
+
+Any estimation technique has .red[bias] and .blue1[variance].
+
+These correspond to .red[how far our estimates are from the truth] and .blue1[how variable our estimates are].
+
+--
+
+&amp;zwj;Variability: if I repeated an experiment many times and analyzed the data, I wouldn't expect the same answer each time. "Variance" quantifies this.
+
+--
+
+Typically, inducing bias in estimation will result in decreased variance, and vice versa.
+
+---
+
+## Machine learning: bias vs variance
+
+&amp;zwj;Example: linear regression
+* find line that best fits points
+* "best-fitting":
+&lt;img src="img/lm_init.png" width="360px" style="display: block; margin: auto;" /&gt;
+---
+
+## Machine learning: bias vs variance
+
+&amp;zwj;Example: linear regression
+* find line that best fits points
+* "best-fitting":
+&lt;img src="img/lm_plus_sse.png" width="360px" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Machine learning: bias vs variance
+
+&amp;zwj;Example: linear regression
+* find line that best fits points
+* "best-fitting":
+&lt;img src="img/lm_plus_line.png" width="360px" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Bias-variance tradeoff in action
+
+Consider two options for obtaining predictions: either fit each point exactly (_interpolating_) or fit linear regression.
+
+Interpolating has .red[zero bias] on the training data; linear regression has .red[some bias].
+
+&lt;img src="img/bias_variance_tradeoff_1.png" width="360px" style="display: block; margin: auto;" /&gt;
+---
+
+## Bias-variance tradeoff in action
+
+Moving one point from `\((0.5, -0.58)\)` to `\((0.5, -0.08)\)` changes the interpolating fit drastically, but doesn't change the linear regression fit.
+
+Interpolating has .blue1[large variance] on the training data; linear regression has .red[small variance].
+
+&lt;img src="img/bias_variance_tradeoff_2.png" width="360px" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Machine learning: bias-variance tradeoff
+
+Typically, machine learning methods allow .red[increased bias] on training data for .blue1[decreased variance], and possibly better predictions on test data.
+
+This increased bias can be difficult to characterize, rendering **inference based on machine learning techniques difficult**.
+
+One way to mitigate bias is to .blue2[average] many "base learners" together:
+* e.g., [guessing the weight of a cow](https://www.npr.org/sections/money/2015/08/07/429720443/17-205-people-guessed-the-weight-of-a-cow-heres-how-they-did)
+* often called "ensembling" or "model stacking"
+
+---
+
+## Example: HIV-1 vaccine regimen down-selection
+
+bnAb: broadly neutralizing antibody
+
+--
+
+AMP trials studied a single bnAb; future trials study bnAb .blue1[combinations].
+
+--
+
+Key challenges for studying combinations:
+* does a given combination neutralize HIV effectively?
+* how should we prioritize the combinations to study in trials?
+
+--
+
+We've created a tool called SLAPNAP (**S**uper Le**A**rner **P**redictions using **NA**b **P**anels) to address these challenges.
+
+---
+
+## Key components of SLAPNAP: Containerization
+
+&lt;img src="img/docker.png" width="360px" style="display: block; margin: auto;" /&gt;
+
+* Lightweight
+* Fully reproducible
+
+---
+
+## Key components of SLAPNAP: data and predictions
+
+When the container is compiled, downloads a snapshot of publicly-available HIV-1 neutralization database.
+
+--
+
+&amp;zwj;Predictions: use .blue1[ensembling] to develop the best-possible outcome predictor
+
+--
+
+Describe .blue2[variable importance] using methods from my PhD dissertation
+
+---
+
+## Current opportunities in statistics/comp. bio.
+
+"Big Data": large number of observations
+* can lead to computational challenges
+* does more = better?
+* Examples: Google data, electronic health records
+
+"Big Data": large number of features
+* difficult to assess relationship between features and response
+* multiple testing
+* number of observations smaller than number of features?
+* Examples: genomic data
+
+---
+
+## Current opportunities in statistics/comp. bio.
+
+Natural language processing: can we learn from text?
+* what text is relevant for your problem?
+* how to include in a statistical procedure?
+* what quality of information do you have?
+* Examples: electronic health records
+
+Push for more agnostic modeling
+* conventional practice: parametric models
+* inferences can be wrong if misspecified!
+* how to use machine learning to do inference?
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "tomorrow-night-blue",
+"highlightLanguage": "rmarkdown",
+"highlightLines": false,
+"slideNumberFormat": "%current%",
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

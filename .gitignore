@@ -1,0 +1,6 @@
+# R stuff
+# --------
+*.Rproj
+.Rproj.user/*
+
+#
